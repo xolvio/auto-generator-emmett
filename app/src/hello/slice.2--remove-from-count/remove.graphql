@@ -1,0 +1,8 @@
+input RemoveInput {
+  id: String!
+  amount: String!
+}
+
+extend type Mutation {
+  removed(input: RemovedInput!): AckNack!
+}

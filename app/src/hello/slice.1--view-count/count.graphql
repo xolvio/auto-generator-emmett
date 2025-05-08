@@ -1,0 +1,8 @@
+type Count {
+    count: String!
+    id: ID!
+}
+
+extend type Query {
+    count(id: ID!): Count!
+}

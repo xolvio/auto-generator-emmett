@@ -1,0 +1,8 @@
+input AddInput {
+    amount: String!
+    id: String!
+}
+
+extend type Mutation {
+    add(input: AddInput!): AckNack!
+}

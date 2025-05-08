@@ -1,0 +1,18 @@
+type Ack {
+    success: Boolean!
+}
+
+type Nack {
+    success: Boolean!
+    reason: String!
+}
+
+union AckNack = Ack | Nack
+
+type Mutation {
+    _: String
+}
+
+type Query {
+    _: String
+}

@@ -8,7 +8,7 @@ This repository contains:
 ## Project Structure
 
 - `/generators` - Code generators for creating Emmett applications
-- `/src` - Sample counter application source code
+- `/app` - Sample counter application source code
 
 ## Getting Started
 

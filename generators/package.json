@@ -1,0 +1,22 @@
+{
+  "name": "codegen-emmett",
+  "version": "1.0.0",
+  "description": "Code generator for Emmett framework",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "typescript": "^5.0.0",
+    "fs-extra": "^11.0.0",
+    "handlebars": "^4.7.0",
+    "ts-morph": "^21.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/fs-extra": "^11.0.0",
+    "vitest": "^1.0.0"
+  }
+}

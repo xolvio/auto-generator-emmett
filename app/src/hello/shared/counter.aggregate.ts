@@ -6,7 +6,7 @@ import { Removed } from "../slice.2--remove-from-count/removed.event";
 
 export type CounterState = { count: number };
 
-export function add(command: Add, state: CounterState): Added {
+export function add(command: Add, _state: CounterState): Added {
   return {
     type: "Added",
     data: {
@@ -17,6 +17,14 @@ export function add(command: Add, state: CounterState): Added {
 }
 
 export function remove(command: Remove, state: CounterState): Removed {
+  if (state.count === 0) {
+    throw new Error("Cannot remove from empty counter");
+  }
+
+  if (state.count < command.data.amount) {
+    throw new Error("Cannot remove more than the current count");
+  }
+
   return {
     type: "Removed",
     data: {
@@ -49,6 +57,20 @@ export function evolve(
       };
     default:
       return state;
+  }
+}
+
+export function decide(
+  command: Add | Remove,
+  state: CounterState
+): Added | Removed {
+  switch (command.type) {
+    case "Add":
+      return add(command, state);
+    case "Remove":
+      return remove(command, state);
+    default:
+      throw new Error("Unknown command");
   }
 }
 

@@ -7,7 +7,7 @@ export type CountState = {
   id: string;
 };
 
-function evolve(state: CountState, event: Added | Removed): CountState {
+export function evolve(state: CountState, event: Added | Removed): CountState {
   switch (event.type) {
     case "Added":
       return { ...state, count: state.count + event.data.amount };
@@ -18,7 +18,7 @@ function evolve(state: CountState, event: Added | Removed): CountState {
   }
 }
 
-function initialState(): CountState {
+export function initialState(): CountState {
   return { count: 0, id: "" };
 }
 

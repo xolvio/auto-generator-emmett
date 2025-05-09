@@ -1,10 +1,18 @@
-import test from 'node:test';
-import assert from 'node:assert';
+import { describe, it } from "vitest";
+import { DeciderSpecification } from "@event-driven-io/emmett";
+import { decide, evolve, initialState } from "../shared/counter.aggregate";
 
-test('add', () => {
-  Evolve.Given(undefined, 'counter1', [
-    new Added('counter1', 1)
-  ])
-    .When((undefined: undefined) => undefined.add(new Add('counter1', 1)))
+const given = DeciderSpecification.for({
+  decide,
+  evolve,
+  initialState,
+});
 
+describe("Add", () => {
+  const id = "counter1";
+  it("should add to count", () => {
+    given([{ type: "Added", data: { amount: 1, id } }])
+      .when({ type: "Add", data: { amount: 1, id } })
+      .then([{ type: "Added", data: { amount: 1, id } }]);
+  });
 });
